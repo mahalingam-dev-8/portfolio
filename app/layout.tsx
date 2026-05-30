@@ -14,7 +14,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Mahalingam R — Software Engineer',
   description: 'Software engineer with 2 years of production experience in distributed systems, AI engineering, and secure cloud infrastructure. Open to backend, full-stack, AI, and platform roles.',
-  metadataBase: new URL('https://mahalingam.dev'),
+  metadataBase: new URL('https://mahalingam-portfolio.vercel.app'),
   openGraph: {
     title: 'Mahalingam R — Software Engineer',
     description: 'Software engineer with 2 years of production experience in distributed systems, AI engineering, and secure cloud infrastructure. Open to backend, full-stack, AI, and platform roles.',
