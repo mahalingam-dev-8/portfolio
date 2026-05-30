@@ -9,5 +9,5 @@ export const personal = {
   github: 'https://github.com/mahalingam-dev-8',
   linkedin: 'https://www.linkedin.com/in/mahalingam-dev/',
   resumeUrl: '/Mahalingam_Resume.pdf',
-  siteUrl: 'https://mahalingam.dev',
+  siteUrl: 'https://mahalingam-portfolio.vercel.app',
 } as const
