@@ -98,7 +98,7 @@ export default function Hero() {
           variants={fadeUp}
           className="font-mono text-sm text-muted-foreground sm:text-base leading-relaxed max-w-xl"
         >
-          <span className="text-primary">// </span>
+          <span className="text-primary">{'// '}</span>
           <Typewriter text={TAGLINE} />
         </motion.p>
 
