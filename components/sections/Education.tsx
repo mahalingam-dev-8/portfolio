@@ -8,7 +8,7 @@ export default function Education() {
     <section id="education" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <div>
-          <span className="font-mono text-xs text-primary">// education</span>
+          <span className="font-mono text-xs text-primary">{'// education'}</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Education & Certifications</h2>
           <div className="mt-4 h-px w-12 bg-primary" />
         </div>

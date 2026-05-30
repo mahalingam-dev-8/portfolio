@@ -87,7 +87,7 @@ export default function Contact() {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-16">
-          <span className="font-mono text-xs text-primary">// contact</span>
+          <span className="font-mono text-xs text-primary">{'// contact'}</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Get in Touch</h2>
           <div className="mt-4 h-px w-12 bg-primary" />
         </div>

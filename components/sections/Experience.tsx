@@ -8,7 +8,7 @@ export default function Experience() {
     <section id="experience" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <div>
-          <span className="font-mono text-xs text-primary">// experience</span>
+          <span className="font-mono text-xs text-primary">{'// experience'}</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Work Experience</h2>
           <div className="mt-4 h-px w-12 bg-primary" />
         </div>

@@ -11,7 +11,7 @@ export default function Projects() {
     <section id="projects" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <div>
-          <span className="font-mono text-xs text-primary">// projects</span>
+          <span className="font-mono text-xs text-primary">{'// projects'}</span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Selected Projects</h2>
           <div className="mt-4 h-px w-12 bg-primary" />
         </div>
