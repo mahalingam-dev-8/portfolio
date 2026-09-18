@@ -1,48 +1,56 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { motion, type Variants } from 'framer-motion'
-import { MapPin, Mail, ArrowDown, Download } from 'lucide-react'
+import { ArrowDownRight, Download, Sparkles, Terminal, Zap, Cloud } from 'lucide-react'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { GithubIcon, LinkedinIcon } from '@/components/icons'
 import { personal } from '@/data/personal'
 
-const TAGLINE = personal.tagline
+const ROLES = personal.roles
 
 const container: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
+  visible: { transition: { staggerChildren: 0.1 } },
 }
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
 }
 
-function Typewriter({ text }: { text: string }) {
+function RoleTypewriter({ roles }: { roles: readonly string[] }) {
+  const [roleIndex, setRoleIndex] = useState(0)
   const [displayed, setDisplayed] = useState('')
-  const [done, setDone] = useState(false)
+  const [phase, setPhase] = useState<'typing' | 'pausing' | 'deleting'>('typing')
 
   useEffect(() => {
-    let i = 0
-    const delay = setTimeout(() => {
-      const id = setInterval(() => {
-        i++
-        setDisplayed(text.slice(0, i))
-        if (i >= text.length) {
-          clearInterval(id)
-          setDone(true)
-        }
-      }, 22)
-      return () => clearInterval(id)
-    }, 600)
-    return () => clearTimeout(delay)
-  }, [text])
+    const current = roles[roleIndex]
+
+    if (phase === 'typing') {
+      if (displayed.length < current.length) {
+        const id = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 55)
+        return () => clearTimeout(id)
+      }
+      const id = setTimeout(() => setPhase('pausing'), 1600)
+      return () => clearTimeout(id)
+    }
+
+    if (phase === 'pausing') {
+      const id = setTimeout(() => setPhase('deleting'), 900)
+      return () => clearTimeout(id)
+    }
+
+    if (displayed.length > 0) {
+      const id = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 28)
+      return () => clearTimeout(id)
+    }
+    setRoleIndex((roleIndex + 1) % roles.length)
+    setPhase('typing')
+  }, [displayed, phase, roleIndex, roles])
 
   return (
     <span>
       {displayed}
-      {!done && <span className="cursor-blink text-primary">▋</span>}
+      <span className="cursor-blink">|</span>
     </span>
   )
 }
@@ -51,89 +59,137 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-24 text-center"
+      className="relative flex min-h-screen items-center overflow-hidden px-6 pb-24 pt-36 lg:pt-32"
     >
-      {/* Dot grid background */}
-      <div aria-hidden="true" className="terminal-grid pointer-events-none absolute inset-0 -z-10 opacity-40" />
-
-      {/* Radial fade overlay so grid fades at edges */}
+      <div aria-hidden="true" className="dot-grid pointer-events-none absolute inset-0 -z-20 opacity-20" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,transparent_40%,hsl(var(--background))_100%)]"
+        className="animate-float-slow pointer-events-none absolute -left-32 top-0 -z-10 h-[28rem] w-[28rem] rounded-full bg-primary/20 blur-[120px]"
       />
-
-      {/* Green glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_40%_at_50%_-10%,hsl(142_71%_55%/0.12),transparent)]"
+        className="animate-float pointer-events-none absolute -right-20 bottom-0 -z-10 h-[30rem] w-[30rem] rounded-full bg-secondary/25 blur-[120px]"
       />
 
       <motion.div
-        className="flex max-w-3xl flex-col items-center gap-6"
+        className="mx-auto grid w-full max-w-6xl items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]"
         variants={container}
         initial="hidden"
         animate="visible"
       >
-        {/* Location + status */}
-        <motion.div variants={fadeUp} className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-          <span className="text-primary">~/</span>
-          <MapPin size={12} />
-          <span>{personal.location}</span>
-          <span className="text-border">·</span>
-          <span className="flex items-center gap-1.5">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-            {personal.availability}
-          </span>
-        </motion.div>
+        {/* Left column */}
+        <div className="flex flex-col items-start gap-7">
+          <motion.div
+            variants={fadeUp}
+            className="glass flex items-center gap-2 rounded-full border border-border px-4 py-2 font-mono text-xs text-muted-foreground"
+          >
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            </span>
+            <span>{personal.availability}</span>
+            <span className="hidden text-border sm:inline">·</span>
+            <span className="hidden sm:inline">{personal.location}</span>
+          </motion.div>
 
-        {/* Name */}
-        <motion.div variants={fadeUp}>
-          <h1 className="bg-gradient-to-br from-foreground via-foreground to-primary bg-clip-text text-transparent text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-            {personal.name}
-          </h1>
-        </motion.div>
+          <motion.h1
+            variants={fadeUp}
+            className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl"
+          >
+            <span className="block text-foreground">Backend &amp; AI</span>
+            <span className="block text-foreground">
+              Engineer
+              <Sparkles className="ml-3 inline-block h-8 w-8 text-primary sm:h-10 sm:w-10" />
+            </span>
+            <span className="text-gradient block">Building Systems</span>
+            <span className="block text-muted-foreground/40">That Scale.</span>
+          </motion.h1>
 
-        {/* Typewriter tagline */}
-        <motion.p
-          variants={fadeUp}
-          className="font-mono text-sm text-muted-foreground sm:text-base leading-relaxed max-w-xl"
-        >
-          <span className="text-primary">{'// '}</span>
-          <Typewriter text={TAGLINE} />
-        </motion.p>
+          <motion.p variants={fadeUp} className="font-mono text-sm text-primary sm:text-base">
+            <span className="mr-2 text-muted-foreground">{'>'}</span>
+            <RoleTypewriter roles={ROLES} />
+          </motion.p>
 
-        {/* About */}
-        <motion.p variants={fadeUp} className="max-w-2xl text-sm text-muted-foreground leading-relaxed">
-          {personal.about}
-        </motion.p>
+          <motion.p variants={fadeUp} className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            {personal.about}
+          </motion.p>
 
-        {/* CTAs */}
-        <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4">
-          <Button size="lg" asChild>
-            <Link href="#projects">
-              View Projects <ArrowDown size={16} className="ml-2" />
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+            <Link
+              href="#projects"
+              className="glow-primary inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              View My Work <ArrowDownRight size={17} />
             </Link>
-          </Button>
-          <Button size="lg" variant="outline" asChild>
-            <a href={personal.resumeUrl} download target="_blank" rel="noopener noreferrer">
-              <Download size={16} className="mr-2" /> Download Resume
+            <a
+              href={personal.resumeUrl}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/50"
+            >
+              <Download size={17} /> Download Resume
             </a>
-          </Button>
-        </motion.div>
+          </motion.div>
+        </div>
 
-        {/* Social icons */}
-        <motion.div variants={fadeUp} className="flex items-center gap-6">
-          <a href={personal.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground hover:text-primary transition-colors">
-            <GithubIcon width={20} height={20} />
-          </a>
-          <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors">
-            <LinkedinIcon width={20} height={20} />
-          </a>
-          <a href={"mailto:" + personal.email} aria-label="Email" className="text-muted-foreground hover:text-primary transition-colors">
-            <Mail size={20} />
-          </a>
+        {/* Right column — abstract visual */}
+        <motion.div variants={fadeUp} className="relative mx-auto hidden aspect-square w-full max-w-md lg:block">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-secondary to-accent p-[2px]"
+          >
+            <div className="h-full w-full rounded-full bg-background" />
+          </div>
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-2xl"
+          />
+
+          <div className="absolute inset-[2px] flex items-center justify-center overflow-hidden rounded-full">
+            <div className="dot-grid absolute inset-0 opacity-20" />
+            <div className="glass relative w-[72%] rounded-2xl border border-border p-4 font-mono text-[11px] leading-relaxed">
+              <div className="mb-3 flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-destructive/70" />
+                <span className="h-2 w-2 rounded-full bg-accent/70" />
+                <span className="h-2 w-2 rounded-full bg-primary/70" />
+                <Terminal size={11} className="ml-2 text-muted-foreground/60" />
+              </div>
+              <p className="text-muted-foreground">
+                <span className="text-secondary">const</span> <span className="text-primary">engineer</span> = {'{'}
+              </p>
+              <p className="pl-3 text-muted-foreground">stack: <span className="text-primary/90">&apos;NestJS · FastAPI&apos;</span>,</p>
+              <p className="pl-3 text-muted-foreground">cloud: <span className="text-primary/90">&apos;AWS · Terraform&apos;</span>,</p>
+              <p className="pl-3 text-muted-foreground">ai: <span className="text-primary/90">&apos;RAG · LLM pipelines&apos;</span>,</p>
+              <p className="text-muted-foreground">{'}'}</p>
+            </div>
+          </div>
+
+          {/* Floating badges */}
+          <div className="glass animate-float absolute -left-4 top-16 rounded-2xl border border-border px-4 py-3">
+            <p className="flex items-center gap-1.5 font-mono text-[10px] text-primary">
+              <Zap size={11} /> Backend
+            </p>
+            <p className="mt-0.5 text-sm font-semibold">NestJS + FastAPI</p>
+          </div>
+
+          <div className="glass animate-float-slow absolute -right-4 bottom-20 rounded-2xl border border-border px-4 py-3">
+            <p className="flex items-center gap-1.5 font-mono text-[10px] text-secondary">
+              <Cloud size={11} /> Cloud
+            </p>
+            <p className="mt-0.5 text-sm font-semibold">AWS + Terraform</p>
+          </div>
+
+          <div className="glass absolute right-6 top-6 rounded-full border border-border px-4 py-2 text-xs font-medium">
+            Production Grade
+          </div>
         </motion.div>
       </motion.div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 lg:flex">
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60">Scroll</span>
+        <div className="h-10 w-px bg-gradient-to-b from-primary to-transparent" />
+      </div>
     </section>
   )
 }

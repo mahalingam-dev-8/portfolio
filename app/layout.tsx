@@ -1,13 +1,26 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Outfit, DM_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/components/ThemeProvider'
 import { Navigation } from '@/components/Navigation'
+import { SocialRail } from '@/components/SocialRail'
+import { ScrollToTop } from '@/components/ScrollToTop'
 import { Toaster } from '@/components/ui/sonner'
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-display',
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
   display: 'swap',
 })
 
@@ -34,21 +47,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.variable + ' font-sans antialiased'}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:ring-2 focus:ring-primary"
-          >
-            Skip to content
-          </a>
-          <Navigation />
-          <main id="main-content">{children}</main>
-          <Toaster />
-          {/* import { Analytics } from '@vercel/analytics/react' */}
-          {/* <Analytics /> */}
-        </ThemeProvider>
+    <html lang="en" className="dark">
+      <body className={`${outfit.variable} ${dmSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:ring-2 focus:ring-primary"
+        >
+          Skip to content
+        </a>
+        <Navigation />
+        <SocialRail />
+        <main id="main-content">{children}</main>
+        <ScrollToTop />
+        <Toaster />
+        {/* import { Analytics } from '@vercel/analytics/react' */}
+        {/* <Analytics /> */}
       </body>
     </html>
   )

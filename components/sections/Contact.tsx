@@ -7,6 +7,7 @@ import { toast } from 'sonner'
 import { motion } from 'framer-motion'
 import { Mail, Send, MapPin, ArrowUpRight } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/icons'
+import { SectionLabel } from '@/components/SectionLabel'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -83,13 +84,14 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section id="contact" className="relative py-24 px-6">
+      <div className="mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-16">
-          <span className="font-mono text-xs text-primary">{'// contact'}</span>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Get in Touch</h2>
-          <div className="mt-4 h-px w-12 bg-primary" />
+        <div className="mb-16 flex flex-col gap-5">
+          <SectionLabel number="06" label="Contact" />
+          <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
+            Let&apos;s <span className="text-gradient">Get in Touch</span>
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
@@ -113,8 +115,8 @@ export default function Contact() {
             <div className="space-y-3">
               {directLinks.map(({ icon: Icon, label, value, href, external }) => {
                 const inner = (
-                  <div className="flex items-center gap-4 rounded-xl border border-border/50 bg-card/50 px-4 py-3.5 group hover:border-primary/40 hover:bg-card transition-all duration-200">
-                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <div className="glass flex items-center gap-4 rounded-xl border border-border px-4 py-3.5 group hover:border-primary/40 transition-all duration-200">
+                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 text-primary">
                       <Icon width={16} height={16} size={16} />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -150,7 +152,7 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <div className="rounded-2xl border border-border/50 bg-card/50 p-8">
+            <div className="glass rounded-2xl border border-border p-8">
               <h3 className="text-lg font-semibold mb-6">Send a message</h3>
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -170,7 +172,11 @@ export default function Contact() {
                   <Textarea id="message" rows={5} placeholder="What's on your mind?" {...register('message')} />
                   {errors.message && <p className="text-xs text-destructive">{errors.message.message}</p>}
                 </div>
-                <Button type="submit" className="w-full gap-2" disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  className="w-full gap-2 bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90"
+                  disabled={isSubmitting}
+                >
                   <Send size={15} />
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>

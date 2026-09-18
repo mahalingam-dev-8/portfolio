@@ -4,10 +4,10 @@ import { personal } from '@/data/personal'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border/50 py-10 px-6">
+    <footer className="border-t border-border py-10 px-6">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
         <div className="text-center sm:text-left">
-          <p className="font-mono text-sm text-primary">~/mahalingam-r</p>
+          <p className="text-gradient font-display text-sm font-semibold">Mahalingam R</p>
           <p className="mt-1 font-mono text-xs text-muted-foreground/60">
             built with Next.js & Tailwind CSS
           </p>

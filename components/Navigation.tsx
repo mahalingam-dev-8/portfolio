@@ -1,28 +1,20 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import { ThemeToggle } from '@/components/ThemeToggle'
-import { personal } from '@/data/personal'
 
 const links = [
-  { label: 'about', href: '#hero' },
-  { label: 'experience', href: '#experience' },
-  { label: 'projects', href: '#projects' },
-  { label: 'skills', href: '#skills' },
-  { label: 'education', href: '#education' },
-  { label: 'contact', href: '#contact' },
+  { label: 'Home', href: '#hero' },
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Education', href: '#education' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   useEffect(() => {
     const ids = links.map((l) => l.href.replace('#', ''))
@@ -40,27 +32,18 @@ export function Navigation() {
   }, [])
 
   return (
-    <nav
-      aria-label="Main navigation"
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled
-          ? 'border-b border-border/50 bg-background/85 backdrop-blur-md'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        {/* Logo */}
+    <nav aria-label="Main navigation" className="fixed inset-x-0 top-4 z-50 px-4">
+      <div className="glass mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border px-6 py-3">
         <a
           href="#hero"
-          className="flex items-center gap-2 font-mono text-sm font-bold"
+          className="font-display text-lg font-extrabold tracking-tight"
           onClick={() => setIsOpen(false)}
         >
-          <span className="text-primary">~/</span>
-          <span>{personal.initials.toLowerCase()}</span>
+          <span className="text-gradient">MAHALINGAM</span>
+          <span className="text-primary">.</span>
         </a>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden items-center gap-1 lg:flex">
           {links.map((link) => {
             const id = link.href.replace('#', '')
             const isActive = activeSection === id
@@ -68,33 +51,37 @@ export function Navigation() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`font-mono text-xs transition-colors ${
+                className={`rounded-full px-4 py-2 text-sm transition-colors ${
                   isActive
-                    ? 'text-primary'
+                    ? 'bg-white/10 font-medium text-foreground'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
-                onClick={() => setIsOpen(false)}
               >
-                {isActive && <span className="mr-1 opacity-60">~/</span>}
                 {link.label}
               </a>
             )
           })}
-          <ThemeToggle />
         </div>
 
-        {/* Mobile */}
-        <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
-          <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+        <div className="flex items-center gap-3">
+          <a
+            href="#contact"
+            className="hidden rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:inline-block"
+          >
+            Contact Me
+          </a>
+          <button
+            className="text-foreground lg:hidden"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile dropdown */}
       {isOpen && (
-        <div className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-md px-6 py-4 flex flex-col gap-4">
+        <div className="glass mx-auto mt-2 flex max-w-6xl flex-col gap-1 rounded-2xl border border-border p-3 lg:hidden">
           {links.map((link) => {
             const id = link.href.replace('#', '')
             const isActive = activeSection === id
@@ -102,12 +89,11 @@ export function Navigation() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`font-mono text-sm transition-colors ${
-                  isActive ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+                className={`rounded-xl px-4 py-2.5 text-sm transition-colors ${
+                  isActive ? 'bg-white/10 font-medium text-foreground' : 'text-muted-foreground hover:text-foreground'
                 }`}
                 onClick={() => setIsOpen(false)}
               >
-                <span className="mr-1 opacity-50">{isActive ? '▶' : '·'}</span>
                 {link.label}
               </a>
             )
