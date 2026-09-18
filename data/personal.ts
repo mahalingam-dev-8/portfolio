@@ -27,7 +27,7 @@ export const personal = {
   stats: [
     { value: '2+', label: 'Years Experience' },
     { value: '60+', label: 'Technologies' },
-    { value: '2', label: 'Companies Shipped For' },
+    { value: '8+', label: 'Production Systems' },
     { value: '1', label: 'SAP Certification' },
   ],
 } as const
