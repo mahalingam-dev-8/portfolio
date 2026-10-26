@@ -9,16 +9,16 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: 'MedRAG Assistant',
-    description: 'Production-grade RAG system for medical document Q&A. Hybrid retrieval (BM25 + pgvector semantic search) merged via Reciprocal Rank Fusion, cross-encoder re-ranking lifting precision from top-20 to top-5, multi-turn query rewriting, and SSE streaming. RAGAS evaluation: 0.93 context recall, 0.86 faithfulness.',
-    tech: ['FastAPI', 'Python', 'React', 'TypeScript', 'PostgreSQL', 'pgvector', 'fastembed', 'Groq LLaMA 3.3 70B', 'RAGAS', 'Tailwind', 'shadcn/ui'],
+    description: 'RAG system for medical document Q&A. Hybrid search (pgvector + Postgres full-text) fused via Reciprocal Rank Fusion, cross-encoder re-ranking of the top-20 candidates down to the top-5, and grounded, cited Gemini answers streamed over SSE on a 512 MB instance using ONNX embeddings. RAGAS evaluation: 0.93 context recall, 0.86 faithfulness.',
+    tech: ['Python', 'FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'pgvector', 'fastembed (ONNX)', 'Gemini', 'RAGAS', 'Tailwind', 'shadcn/ui'],
     liveUrl: 'https://medrag-frontend-lilac.vercel.app',
     githubUrl: 'https://github.com/mahalingam-dev-8/medrag-backend',
   },
   {
     name: 'Shoppy',
-    description: 'Production-grade e-commerce platform. Next.js 14 App Router + NestJS backend on AWS. JWT auth with HttpOnly cookies, RBAC, Stripe webhook-driven orders, S3 image uploads, Socket.io real-time updates, CloudFront edge caching.',
-    tech: ['Next.js 14', 'NestJS', 'TypeScript', 'PostgreSQL', 'Prisma', 'Stripe', 'AWS', 'Socket.io', 'Tailwind', 'MUI'],
+    description: 'E-commerce platform with a Spring Boot backend and Next.js 14 frontend. Spring Security + JWT with RBAC, Stripe with signature-verified, idempotent webhooks for exactly-once order creation, live product updates over WebSockets (STOMP), and 54 automated tests (JUnit 5, Mockito, Testcontainers) at ~80% coverage, run in CI on every push.',
+    tech: ['Java', 'Spring Boot', 'Next.js 14', 'PostgreSQL', 'Stripe', 'AWS', 'WebSockets (STOMP)', 'JUnit 5', 'Testcontainers', 'GitHub Actions', 'MUI'],
     liveUrl: 'https://shopping-frontend-ebon.vercel.app',
-    githubUrl: 'https://github.com/mahalingam-dev-8/shopping-backend',
+    githubUrl: 'https://github.com/mahalingam-dev-8/shoppy-backend',
   },
 ]

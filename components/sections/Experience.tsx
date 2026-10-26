@@ -5,17 +5,13 @@ import { SectionLabel } from '@/components/SectionLabel'
 import { experience } from '@/data/experience'
 
 const TECH_TERMS = [
-  'WebSocket gateways', 'Redis Streams', 'Soniox STT', 'FFmpeg', 'speaker diarization',
-  'GPT-4o Vision', 'Gemini 2.0 Flash', 'Whisper', 'OpenAI', 'Gemini', 'Anthropic',
-  'LLM factory', 'Prisma ORM', 'NestJS EventEmitter',
-  'Auth0', 'JWT', 'RBAC', 'DKIM/SPF/DMARC', 'SES',
-  'Cashfree', 'Zoho Books', 'Celery', 'ElastiCache TLS', 'ElastiCache',
-  'CloudFront', 'RSA-signed cookies', 'Secrets Manager', 'ACM',
-  'ECS Fargate', 'GitHub Actions', 'ECR', 'EventBridge', 'Lambda',
-  'SAP Integration Suite', 'SAP S/4HANA', 'OData APIs',
-  'PostgreSQL', 'Redis', 'Twilio', 'PDFKit', 'Sharp',
-  'S3', 'ALB', 'Route 53', 'GCP Storage Transfer Service',
-  'ASP.NET Core 8', 'ASP.NET Core', 'Razor', 'AJAX',
+  'NestJS', 'WebSockets', 'Redis', 'PostgreSQL',
+  'OpenAI', 'Gemini', 'Anthropic', 'Levenshtein', 'Double Metaphone',
+  'Cashfree', 'UPI/eNACH', 'HMAC-verified webhooks',
+  'Terraform', 'ECS Fargate', 'GitHub Actions',
+  'SAP ERP', 'OData APIs', 'RBAC',
+  'GPT-4o Vision', 'Whisper', 'Auth0', 'SES', 'CloudFront', 'RSA-signed cookies',
+  'Twilio', 'Lambda', 'S3', 'GCP Storage', 'EventBridge',
 ]
 
 function HighlightedText({ text }: { text: string }) {

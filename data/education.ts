@@ -6,12 +6,6 @@ export type EducationItem = {
   scoreLabel: string
 }
 
-export type Certification = {
-  title: string
-  issuer: string
-  description: string
-}
-
 export const education: EducationItem[] = [
   {
     institution: 'SASTRA Deemed University',
@@ -33,13 +27,5 @@ export const education: EducationItem[] = [
     period: 'Jun 2018',
     score: '8.91 / 10',
     scoreLabel: 'CGPA',
-  },
-]
-
-export const certifications: Certification[] = [
-  {
-    title: 'SAP Certified Development Associate – SAP Integration Suite',
-    issuer: 'SAP',
-    description: 'Validated skills in designing, developing, and managing integrations using SAP Integration Suite.',
   },
 ]

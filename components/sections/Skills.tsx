@@ -1,12 +1,12 @@
 'use client'
 import { motion } from 'framer-motion'
 import {
-  SiTypescript, SiJavascript, SiPython,
-  SiNestjs, SiNodedotjs, SiFastapi, SiDotnet, SiCelery, SiPrisma,
-  SiPostgresql, SiRedis, SiDocker,
+  SiOpenjdk, SiTypescript, SiJavascript, SiPython,
+  SiNestjs, SiNodedotjs, SiSpringboot, SiFastapi, SiCelery, SiPrisma,
+  SiPostgresql, SiRedis, SiDocker, SiTerraform,
   SiGooglecloud, SiGithubactions,
   SiOpenai, SiReact, SiNextdotjs, SiTailwindcss, SiMui,
-  SiAuth0, SiStripe, SiTwilio, SiSap, SiFfmpeg,
+  SiAuth0, SiStripe, SiTwilio, SiFfmpeg,
 } from 'react-icons/si'
 import type { IconType } from 'react-icons'
 import { SectionLabel } from '@/components/SectionLabel'
@@ -14,21 +14,23 @@ import { skills } from '@/data/skills'
 import { Badge } from '@/components/ui/badge'
 
 const iconMap: Record<string, IconType> = {
+  'Java': SiOpenjdk,
   'TypeScript': SiTypescript,
   'JavaScript': SiJavascript,
   'Python': SiPython,
   'NestJS': SiNestjs,
   'Node.js': SiNodedotjs,
+  'Spring Boot': SiSpringboot,
   'FastAPI': SiFastapi,
-  'ASP.NET Core MVC': SiDotnet,
   'Celery': SiCelery,
   'Prisma ORM': SiPrisma,
   'PostgreSQL': SiPostgresql,
   'Redis': SiRedis,
   'Docker': SiDocker,
+  'Terraform': SiTerraform,
   'GCP': SiGooglecloud,
   'GitHub Actions': SiGithubactions,
-  'OpenAI GPT-4o': SiOpenai,
+  'OpenAI': SiOpenai,
   'React': SiReact,
   'Next.js': SiNextdotjs,
   'Tailwind CSS': SiTailwindcss,
@@ -36,7 +38,6 @@ const iconMap: Record<string, IconType> = {
   'Auth0': SiAuth0,
   'Stripe': SiStripe,
   'Twilio (WhatsApp)': SiTwilio,
-  'SAP Integration Suite': SiSap,
   'FFmpeg': SiFfmpeg,
 }
 

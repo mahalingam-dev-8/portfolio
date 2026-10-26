@@ -22,12 +22,12 @@ export const personal = {
   ],
   whyHireMe: {
     statement: 'Production systems. Secure by default. Built to scale.',
-    pills: ['NestJS', 'FastAPI', 'AWS', 'Terraform', 'RAG / LLM', 'PostgreSQL'],
+    pills: ['Spring Boot', 'NestJS', 'FastAPI', 'AWS', 'Terraform', 'RAG / LLM'],
   },
   stats: [
     { value: '2+', label: 'Years Experience' },
     { value: '60+', label: 'Technologies' },
     { value: '8+', label: 'Production Systems' },
-    { value: '1', label: 'SAP Certification' },
+    { value: '100K+', label: 'Users Served' },
   ],
 } as const

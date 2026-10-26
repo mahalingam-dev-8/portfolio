@@ -157,7 +157,7 @@ export default function Hero() {
               <p className="text-muted-foreground">
                 <span className="text-secondary">const</span> <span className="text-primary">engineer</span> = {'{'}
               </p>
-              <p className="pl-3 text-muted-foreground">stack: <span className="text-primary/90">&apos;NestJS · FastAPI&apos;</span>,</p>
+              <p className="pl-3 text-muted-foreground">stack: <span className="text-primary/90">&apos;NestJS · Spring Boot · FastAPI&apos;</span>,</p>
               <p className="pl-3 text-muted-foreground">cloud: <span className="text-primary/90">&apos;AWS · Terraform&apos;</span>,</p>
               <p className="pl-3 text-muted-foreground">ai: <span className="text-primary/90">&apos;RAG · LLM pipelines&apos;</span>,</p>
               <p className="text-muted-foreground">{'}'}</p>
@@ -169,7 +169,7 @@ export default function Hero() {
             <p className="flex items-center gap-1.5 font-mono text-[10px] text-primary">
               <Zap size={11} /> Backend
             </p>
-            <p className="mt-0.5 text-sm font-semibold">NestJS + FastAPI</p>
+            <p className="mt-0.5 text-sm font-semibold">NestJS + Spring Boot</p>
           </div>
 
           <div className="glass animate-float-slow absolute -right-4 bottom-20 rounded-2xl border border-border px-4 py-3">
