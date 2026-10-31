@@ -1,5 +1,5 @@
 export const personal = {
-  name: 'Mahalingam R',
+  name: 'Mahalingam Ramasamy',
   initials: 'MR',
   roles: [
     'Software Developer',
