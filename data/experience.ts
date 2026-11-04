@@ -30,7 +30,7 @@ export const experience: ExperienceItem[] = [
   },
   {
     company: 'ROX Hi-TECH',
-    role: 'Full Stack Developer',
+    role: 'Integration Engineer (Full Stack)',
     period: 'June 2024 – Oct 2025',
     location: 'Chennai',
     highlights: [
