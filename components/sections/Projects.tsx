@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, PlayCircle } from 'lucide-react'
 import { GithubIcon } from '@/components/icons'
 import { SectionLabel } from '@/components/SectionLabel'
 import { projects } from '@/data/projects'
@@ -61,8 +61,13 @@ export default function Projects() {
                     asChild
                     className="bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90"
                   >
+                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                      <PlayCircle size={14} className="mr-1.5" />Watch Demo
+                    </a>
+                  </Button>
+                  <Button size="sm" variant="outline" asChild className="border-border">
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink size={14} className="mr-1.5" />Live Demo
+                      <ExternalLink size={14} className="mr-1.5" />Live App
                     </a>
                   </Button>
                   <Button size="sm" variant="outline" asChild className="border-border">

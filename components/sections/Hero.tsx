@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { motion, type Variants } from 'framer-motion'
-import { ArrowDownRight, Download, Sparkles, Terminal, Zap, Cloud } from 'lucide-react'
+import { ArrowDownRight, Download, Sparkles, Zap, Cloud } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { personal } from '@/data/personal'
 
@@ -132,8 +133,11 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right column — abstract visual */}
-        <motion.div variants={fadeUp} className="relative mx-auto hidden aspect-square w-full max-w-md lg:block">
+        {/* Right column — photo */}
+        <motion.div
+          variants={fadeUp}
+          className="relative order-first mx-auto aspect-square w-full max-w-[16rem] sm:max-w-xs lg:order-none lg:max-w-md"
+        >
           <div
             aria-hidden="true"
             className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-secondary to-accent p-[2px]"
@@ -145,41 +149,33 @@ export default function Hero() {
             className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-2xl"
           />
 
-          <div className="absolute inset-[2px] flex items-center justify-center overflow-hidden rounded-full">
-            <div className="dot-grid absolute inset-0 opacity-20" />
-            <div className="glass relative w-[72%] rounded-2xl border border-border p-4 font-mono text-[11px] leading-relaxed">
-              <div className="mb-3 flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-full bg-destructive/70" />
-                <span className="h-2 w-2 rounded-full bg-accent/70" />
-                <span className="h-2 w-2 rounded-full bg-primary/70" />
-                <Terminal size={11} className="ml-2 text-muted-foreground/60" />
-              </div>
-              <p className="text-muted-foreground">
-                <span className="text-secondary">const</span> <span className="text-primary">engineer</span> = {'{'}
-              </p>
-              <p className="pl-3 text-muted-foreground">stack: <span className="text-primary/90">&apos;NestJS · Spring Boot · FastAPI&apos;</span>,</p>
-              <p className="pl-3 text-muted-foreground">cloud: <span className="text-primary/90">&apos;AWS · Terraform&apos;</span>,</p>
-              <p className="pl-3 text-muted-foreground">ai: <span className="text-primary/90">&apos;RAG · LLM pipelines&apos;</span>,</p>
-              <p className="text-muted-foreground">{'}'}</p>
-            </div>
+          <div className="absolute inset-[6px] overflow-hidden rounded-full">
+            <Image
+              src="/profile.jpg"
+              alt={personal.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 448px, 320px"
+              className="object-cover object-top"
+            />
           </div>
 
           {/* Floating badges */}
-          <div className="glass animate-float absolute -left-4 top-16 rounded-2xl border border-border px-4 py-3">
+          <div className="glass animate-float absolute -left-4 top-16 hidden rounded-2xl border border-border bg-background/80 px-4 py-3 lg:block">
             <p className="flex items-center gap-1.5 font-mono text-[10px] text-primary">
               <Zap size={11} /> Backend
             </p>
             <p className="mt-0.5 text-sm font-semibold">NestJS + Spring Boot</p>
           </div>
 
-          <div className="glass animate-float-slow absolute -right-4 bottom-20 rounded-2xl border border-border px-4 py-3">
+          <div className="glass animate-float-slow absolute -right-16 bottom-6 hidden rounded-2xl border border-border bg-background/80 px-4 py-3 lg:block">
             <p className="flex items-center gap-1.5 font-mono text-[10px] text-secondary">
               <Cloud size={11} /> Cloud
             </p>
             <p className="mt-0.5 text-sm font-semibold">AWS + Terraform</p>
           </div>
 
-          <div className="glass absolute right-6 top-6 rounded-full border border-border px-4 py-2 text-xs font-medium">
+          <div className="glass absolute right-6 top-6 hidden rounded-full border border-border px-4 py-2 text-xs font-medium lg:block">
             Production Grade
           </div>
         </motion.div>

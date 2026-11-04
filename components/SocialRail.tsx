@@ -1,11 +1,12 @@
 'use client'
-import { Mail } from 'lucide-react'
+import { Code2, Mail } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/icons'
 import { personal } from '@/data/personal'
 
 const items = [
   { href: personal.github, label: 'GitHub', Icon: GithubIcon, external: true },
   { href: personal.linkedin, label: 'LinkedIn', Icon: LinkedinIcon, external: true },
+  { href: personal.leetcode, label: 'LeetCode', Icon: Code2, external: true },
   { href: `mailto:${personal.email}`, label: 'Email', Icon: Mail, external: false },
 ]
 

@@ -14,6 +14,7 @@ export const personal = {
   email: 'mahalingam2188@gmail.com',
   github: 'https://github.com/mahalingam-dev-8',
   linkedin: 'https://www.linkedin.com/in/mahalingam-dev/',
+  leetcode: 'https://leetcode.com/u/Mahalingam_Ramasamy/',
   resumeUrl: '/Mahalingam_Resume.pdf',
   siteUrl: 'https://mahalingam-portfolio.vercel.app',
   aboutParagraphs: [

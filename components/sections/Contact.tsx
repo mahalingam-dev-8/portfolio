@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { toast } from 'sonner'
 import { motion } from 'framer-motion'
-import { Mail, Send, MapPin, ArrowUpRight } from 'lucide-react'
+import { Mail, Send, MapPin, ArrowUpRight, Code2 } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/icons'
 import { SectionLabel } from '@/components/SectionLabel'
 import { Button } from '@/components/ui/button'
@@ -40,6 +40,13 @@ const directLinks = [
     label: 'GitHub',
     value: 'github.com/mahalingam-dev-8',
     href: personal.github,
+    external: true,
+  },
+  {
+    icon: Code2,
+    label: 'LeetCode',
+    value: 'leetcode.com/u/Mahalingam_Ramasamy',
+    href: personal.leetcode,
     external: true,
   },
   {
