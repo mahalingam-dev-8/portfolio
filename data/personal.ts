@@ -8,7 +8,7 @@ export const personal = {
     'Full-Stack Developer',
   ],
   tagline: 'Software Engineer building production-grade distributed systems, AI pipelines, and secure cloud infrastructure.',
-  about: 'Software engineer with two years building production backend systems, AI pipelines, and distributed infrastructure on AWS. Open to any engineering role where reliability and scale matter.',
+  about: 'Software engineer with 2+ years building and scaling production systems end to end, from API design to AWS deployment: event-driven pipelines, real-time WebSocket services, payment integrations and LLM-powered features.',
   location: 'Chennai, India',
   availability: 'Open to remote / hybrid / relocation',
   email: 'mahalingam2188@gmail.com',
@@ -18,8 +18,9 @@ export const personal = {
   resumeUrl: '/Mahalingam_Resume.pdf',
   siteUrl: 'https://mahalingam-portfolio.vercel.app',
   aboutParagraphs: [
-    'I am a software engineer with two years of production experience building backend systems, AI pipelines, and distributed infrastructure. At Ekko Medical Solutions I architect real-time transcription services, provider-agnostic LLM pipelines, and multi-format extraction systems that turn images, PDFs, and audio into structured clinical records.',
-    'I provision AWS infrastructure end to end with Terraform, ship containerised services on ECS Fargate through GitHub Actions, and build secure delivery paths with Auth0, RBAC, CloudFront signed cookies, and cross-cloud disaster recovery. Open to any engineering role where reliability and scale matter.',
+    'I am a software engineer with 2+ years of experience building and scaling production systems end to end, from API design and data modelling to deployment on AWS. I work across Node.js (NestJS), Java (Spring Boot) and React, and I care most about performance and reliability.',
+    'At Ekko Medical Solutions I build the backend of an AI clinical documentation platform. I cut note-generation latency by 50%, designed an LLM layer across OpenAI, Gemini and Anthropic with automatic failover, built real-time transcription for sessions up to 5 hours, and integrated subscription payments and India’s ABHA health ID. Before that, at ROX Hi-TECH, I built an HR platform used by 100,000+ employees.',
+    'Outside work I build projects to go deeper, like a Spring Boot marketplace with idempotent Stripe payments and a medical RAG assistant, and I practise DSA regularly on LeetCode.',
   ],
   whyHireMe: {
     statement: 'Production systems. Secure by default. Built to scale.',
