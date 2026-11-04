@@ -161,7 +161,7 @@ export default function Hero() {
           </div>
 
           {/* Floating badges */}
-          <div className="glass animate-float absolute -left-4 top-16 hidden rounded-2xl border border-border bg-background/80 px-4 py-3 lg:block">
+          <div className="glass animate-float absolute -left-20 top-[62%] hidden rounded-2xl border border-border bg-background/80 px-4 py-3 lg:block">
             <p className="flex items-center gap-1.5 font-mono text-[10px] text-primary">
               <Zap size={11} /> Backend
             </p>
@@ -175,7 +175,7 @@ export default function Hero() {
             <p className="mt-0.5 text-sm font-semibold">AWS + Terraform</p>
           </div>
 
-          <div className="glass absolute right-6 top-6 hidden rounded-full border border-border px-4 py-2 text-xs font-medium lg:block">
+          <div className="glass absolute -right-12 top-0 hidden rounded-full border border-border bg-background/80 px-4 py-2 text-xs font-medium lg:block">
             Production Grade
           </div>
         </motion.div>
