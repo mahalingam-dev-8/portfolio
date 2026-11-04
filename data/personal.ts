@@ -28,8 +28,8 @@ export const personal = {
   },
   stats: [
     { value: '2+', label: 'Years Experience' },
-    { value: '60+', label: 'Technologies' },
-    { value: '8+', label: 'Production Systems' },
+    { value: '45+', label: 'Technologies' },
+    { value: '5+', label: 'Production Systems' },
     { value: '100K+', label: 'Users Served' },
   ],
 } as const
